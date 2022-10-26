@@ -23,6 +23,7 @@ class Form extends Component {
               placeholder="Digite o nome da carta ..."
               value={ cardName }
               onChange={ onInputChange }
+              name="cardName"
             />
           </label>
           <br />
@@ -30,7 +31,7 @@ class Form extends Component {
           <label htmlFor="textarea-description">
             Descrição
             <textarea
-              name="description"
+              name="cardDescription"
               id="textarea-description"
               cols="30"
               rows="10"
@@ -51,6 +52,7 @@ class Form extends Component {
               placeholder="Digite o valor do ataque"
               value={ cardAttr1 }
               onChange={ onInputChange }
+              name="cardAttr1"
             />
           </label>
           <br />
@@ -64,6 +66,7 @@ class Form extends Component {
               placeholder="Digite o valor da defesa"
               value={ cardAttr2 }
               onChange={ onInputChange }
+              name="cardAttr2"
             />
           </label>
           <br />
@@ -77,6 +80,7 @@ class Form extends Component {
               placeholder="Digite o valor da vida"
               value={ cardAttr3 }
               onChange={ onInputChange }
+              name="cardAttr3"
             />
           </label>
           <br />
@@ -89,6 +93,7 @@ class Form extends Component {
               id="input-image"
               value={ cardImage }
               onChange={ onInputChange }
+              name="cardImage"
             />
           </label>
           <br />
@@ -96,7 +101,7 @@ class Form extends Component {
           <label htmlFor="select-rarity">
             Raridade
             <select
-              name="rarity"
+              name="cardRare"
               id="select-rarity"
               data-testid="rare-input"
               value={ cardRare }
@@ -116,6 +121,7 @@ class Form extends Component {
               data-testid="trunfo-input"
               checked={ cardTrunfo }
               onChange={ onInputChange }
+              name="cardTrunfo"
             />
           </label>
           <br />
