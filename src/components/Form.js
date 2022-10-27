@@ -49,7 +49,7 @@ class Form extends Component {
               type="number"
               data-testid="attr1-input"
               id="input-numberAttack"
-              placeholder="Digite o valor do ataque"
+              placeholder="Máximo de 90 pontos"
               value={ cardAttr1 }
               onChange={ onInputChange }
               name="cardAttr1"
@@ -63,7 +63,7 @@ class Form extends Component {
               type="number"
               data-testid="attr2-input"
               id="input-numberDefense"
-              placeholder="Digite o valor da defesa"
+              placeholder="Máximo de 90 pontos"
               value={ cardAttr2 }
               onChange={ onInputChange }
               name="cardAttr2"
@@ -77,7 +77,7 @@ class Form extends Component {
               type="number"
               data-testid="attr3-input"
               id="input-numberLife"
-              placeholder="Digite o valor da vida"
+              placeholder="Máximo de 90 pontos"
               value={ cardAttr3 }
               onChange={ onInputChange }
               name="cardAttr3"
@@ -91,6 +91,7 @@ class Form extends Component {
               type="text"
               data-testid="image-input"
               id="input-image"
+              placeholder="Link para imagem"
               value={ cardImage }
               onChange={ onInputChange }
               name="cardImage"
