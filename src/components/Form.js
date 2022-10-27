@@ -4,12 +4,11 @@ import PropTypes from 'prop-types';
 class Form extends Component {
   render() {
     const {
-      onInputChange,
+      onInputChange, hasTrunfo,
       cardName, cardDescription,
       cardAttr1, cardAttr2, cardAttr3,
       cardImage, cardRare, cardTrunfo,
       isSaveButtonDisabled, onSaveButtonClick,
-      // hasTrunfo,
     } = this.props;
     return (
       <form>
@@ -116,16 +115,22 @@ class Form extends Component {
           </label>
           <br />
           <br />
-          <label htmlFor="input-trunfo">
-            Super Trunfo
-            <input
-              type="checkbox"
-              data-testid="trunfo-input"
-              checked={ cardTrunfo }
-              onChange={ onInputChange }
-              name="cardTrunfo"
-            />
-          </label>
+          {
+            hasTrunfo
+              ? <h4>Você já tem um Super Trunfo em seu baralho</h4>
+              : (
+                <label htmlFor="input-trunfo">
+                  Super Trunfo
+                  <input
+                    type="checkbox"
+                    data-testid="trunfo-input"
+                    checked={ cardTrunfo }
+                    onChange={ onInputChange }
+                    name="cardTrunfo"
+                  />
+                </label>
+              )
+          }
           <br />
           <br />
           <button
@@ -151,7 +156,7 @@ Form.propTypes = {
   cardImage: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
-  // hasTrunfo: PropTypes.bool.isRequired,
+  hasTrunfo: PropTypes.bool.isRequired,
   isSaveButtonDisabled: PropTypes.bool.isRequired,
   onInputChange: PropTypes.func.isRequired,
   onSaveButtonClick: PropTypes.func.isRequired,
