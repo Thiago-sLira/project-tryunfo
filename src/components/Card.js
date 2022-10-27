@@ -9,7 +9,7 @@ class Card extends Component {
       cardImage, cardRare, cardTrunfo,
     } = this.props;
     return (
-      <section id="container-card">
+      <section className="container-card">
         <h4 data-testid="name-card">{ cardName }</h4>
         <span data-testid="rare-card">{cardRare }</span>
         <img src={ cardImage } alt={ cardName } data-testid="image-card" />

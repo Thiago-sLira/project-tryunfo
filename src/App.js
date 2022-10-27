@@ -1,4 +1,5 @@
 import React from 'react';
+import './App.css';
 import Form from './components/Form';
 import Card from './components/Card';
 
@@ -13,6 +14,7 @@ class App extends React.Component {
     cardRare: 'normal',
     cardTrunfo: false,
     isSaveButtonDisabled: true,
+    cardsCreated: [],
   };
 
   enableButton = () => {
@@ -29,12 +31,12 @@ class App extends React.Component {
     && (Number(cardAttr2) >= 0 && Number(cardAttr2) < maxNumber)
     && (Number(cardAttr3) >= 0 && Number(cardAttr3) < maxNumber);
 
-    const cName = Object.values(cardName).length > 0;
-    const cDescription = Object.values(cardDescription).length > 0;
-    const cImage = Object.values(cardImage).length > 0;
-    const cRare = Object.values(cardRare).length > 0;
+    const verifyLengthInputs = cardName.length > 0
+    && cardDescription.length > 0
+    && cardImage.length > 0
+    && cardRare.length > 0;
 
-    if (attr && cName && cDescription && cImage && cRare) {
+    if (attr && verifyLengthInputs) {
       this.setState({
         isSaveButtonDisabled: false,
       });
@@ -54,7 +56,29 @@ class App extends React.Component {
   };
 
   onSaveButtonClick = () => {
-    console.log('Oioioioi');
+    // const { cardsCreated } = this.state;
+    this.setState((prevState) => {
+      const savedItems = {
+        cardName: prevState.cardName,
+        cardDescription: prevState.cardDescription,
+        cardAttr1: prevState.cardAttr1,
+        cardAttr2: prevState.cardAttr2,
+        cardAttr3: prevState.cardAttr3,
+        cardImage: prevState.cardImage,
+        cardRare: prevState.cardRare,
+      };
+      return ({
+        cardsCreated: [...prevState.cardsCreated, savedItems],
+      });
+    }, this.setState({
+      cardName: '',
+      cardDescription: '',
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
+      cardImage: '',
+      cardRare: 'normal',
+    }));
   };
 
   render() {
