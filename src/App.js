@@ -3,6 +3,7 @@ import './App.css';
 import Form from './components/Form';
 import Card from './components/Card';
 import CardList from './components/CardList';
+import Filter from './components/Filter';
 
 class App extends React.Component {
   state = {
@@ -17,6 +18,13 @@ class App extends React.Component {
     isSaveButtonDisabled: true,
     hasTrunfo: false,
     cardsCreated: [],
+    filterName: '',
+  };
+
+  nameFilter = () => {
+    const { cardsCreated, filterName } = this.state;
+    const filter = cardsCreated.filter((card) => card.cardName.includes(filterName));
+    this.setState({ cardsCreated: filter });
   };
 
   enableButton = () => {
@@ -55,6 +63,7 @@ class App extends React.Component {
     this.setState({
       [name]: value,
     }, this.enableButton);
+    this.nameFilter();
   };
 
   disableTrunfo = () => {
@@ -105,7 +114,7 @@ class App extends React.Component {
 
   render() {
     const {
-      cardName, cardDescription, cardsCreated,
+      cardName, cardDescription, cardsCreated, filterName,
       cardAttr1, cardAttr2, cardAttr3,
       cardImage, cardRare, cardTrunfo,
       isSaveButtonDisabled, hasTrunfo,
@@ -136,10 +145,16 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
         />
-        <CardList
-          cardsCreated={ cardsCreated }
-          deleteCard={ this.deleteCard }
-        />
+        <div>
+          <Filter
+            filterName={ filterName }
+            onInputChange={ this.onInputChange }
+          />
+          <CardList
+            cardsCreated={ cardsCreated }
+            deleteCard={ this.deleteCard }
+          />
+        </div>
       </div>
     );
   }
