@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import Form from './components/Form';
 import Card from './components/Card';
+import CardList from './components/CardList';
 
 class App extends React.Component {
   state = {
@@ -67,21 +68,23 @@ class App extends React.Component {
   };
 
   onSaveButtonClick = () => {
-    this.setState((prevState) => {
-      const savedItems = {
-        cardName: prevState.cardName,
-        cardDescription: prevState.cardDescription,
-        cardAttr1: prevState.cardAttr1,
-        cardAttr2: prevState.cardAttr2,
-        cardAttr3: prevState.cardAttr3,
-        cardImage: prevState.cardImage,
-        cardRare: prevState.cardRare,
-        cardTrunfo: prevState.cardTrunfo,
-      };
-      return ({
-        cardsCreated: [...prevState.cardsCreated, savedItems],
-      });
-    }, this.setState({
+    const {
+      cardName, cardDescription, cardAttr1, cardAttr2,
+      cardAttr3, cardImage, cardRare, cardTrunfo,
+    } = this.state;
+
+    const savedItems = {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+    };
+
+    this.setState((prevState) => ({
       cardName: '',
       cardDescription: '',
       cardAttr1: '0',
@@ -90,12 +93,13 @@ class App extends React.Component {
       cardImage: '',
       cardRare: 'normal',
       isSaveButtonDisabled: true,
-    }, this.disableTrunfo));
+      cardsCreated: [...prevState.cardsCreated, savedItems],
+    }), this.disableTrunfo);
   };
 
   render() {
     const {
-      cardName, cardDescription,
+      cardName, cardDescription, cardsCreated,
       cardAttr1, cardAttr2, cardAttr3,
       cardImage, cardRare, cardTrunfo,
       isSaveButtonDisabled, hasTrunfo,
@@ -125,6 +129,9 @@ class App extends React.Component {
           cardImage={ cardImage }
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
+        />
+        <CardList
+          cardsCreated={ cardsCreated }
         />
       </div>
     );
