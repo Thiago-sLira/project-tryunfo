@@ -97,6 +97,12 @@ class App extends React.Component {
     }), this.disableTrunfo);
   };
 
+  deleteCard = (indexCard) => {
+    const { cardsCreated } = this.state;
+    const newCardsCreated = cardsCreated.filter((_el, index) => index !== indexCard);
+    this.setState({ cardsCreated: newCardsCreated }, this.disableTrunfo);
+  };
+
   render() {
     const {
       cardName, cardDescription, cardsCreated,
@@ -132,6 +138,7 @@ class App extends React.Component {
         />
         <CardList
           cardsCreated={ cardsCreated }
+          deleteCard={ this.deleteCard }
         />
       </div>
     );
