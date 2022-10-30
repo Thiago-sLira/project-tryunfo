@@ -19,12 +19,20 @@ class App extends React.Component {
     hasTrunfo: false,
     cardsCreated: [],
     filterName: '',
+    filterRarity: 'todas',
   };
 
-  nameFilter = () => {
-    const { cardsCreated, filterName } = this.state;
-    const filter = cardsCreated.filter((card) => card.cardName.includes(filterName));
-    this.setState({ cardsCreated: filter });
+  filterInputs = () => {
+    const { cardsCreated, filterName, filterRarity } = this.state;
+    if (filterRarity === 'todas') {
+      const filter = cardsCreated.filter((card) => (
+        card.cardName.includes(filterName)));
+      this.setState({ cardsCreated: filter });
+    } else {
+      const filter = cardsCreated.filter((card) => (
+        card.cardName.includes(filterName) && card.cardRare === (filterRarity)));
+      this.setState({ cardsCreated: filter });
+    }
   };
 
   enableButton = () => {
@@ -63,7 +71,14 @@ class App extends React.Component {
     this.setState({
       [name]: value,
     }, this.enableButton);
-    this.nameFilter();
+  };
+
+  onInputFilterChange = ({ target }) => {
+    const { name } = target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    this.setState({
+      [name]: value,
+    }, this.filterInputs);
   };
 
   disableTrunfo = () => {
@@ -115,7 +130,7 @@ class App extends React.Component {
   render() {
     const {
       cardName, cardDescription, cardsCreated, filterName,
-      cardAttr1, cardAttr2, cardAttr3,
+      cardAttr1, cardAttr2, cardAttr3, filterRarity,
       cardImage, cardRare, cardTrunfo,
       isSaveButtonDisabled, hasTrunfo,
     } = this.state;
@@ -148,7 +163,8 @@ class App extends React.Component {
         <div>
           <Filter
             filterName={ filterName }
-            onInputChange={ this.onInputChange }
+            onInputFilterChange={ this.onInputFilterChange }
+            filterRarity={ filterRarity }
           />
           <CardList
             cardsCreated={ cardsCreated }
