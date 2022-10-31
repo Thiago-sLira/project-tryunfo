@@ -4,11 +4,11 @@ import PropTypes from 'prop-types';
 class CardList extends Component {
   render() {
     const {
-      cardsCreated, deleteCard,
+      cardsList, deleteCard,
     } = this.props;
     return (
       <div>
-        { cardsCreated.map((el, index) => (
+        { cardsList.map((el, index) => (
           <div key={ el.cardName } className="container-card">
             <section className="card-created">
               <h4 data-testid="name-card">
@@ -50,7 +50,7 @@ class CardList extends Component {
 
 CardList.propTypes = {
   deleteCard: PropTypes.func.isRequired,
-  cardsCreated: PropTypes.arrayOf(PropTypes.shape({
+  cardsList: PropTypes.arrayOf(PropTypes.shape({
     cardName: PropTypes.string.isRequired,
     cardDescription: PropTypes.string.isRequired,
     cardAttr1: PropTypes.string.isRequired,

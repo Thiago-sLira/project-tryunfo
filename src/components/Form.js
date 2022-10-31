@@ -123,6 +123,7 @@ class Form extends Component {
                   Super Trunfo
                   <input
                     type="checkbox"
+                    id="input-trunfo"
                     data-testid="trunfo-input"
                     checked={ cardTrunfo }
                     onChange={ onInputChange }

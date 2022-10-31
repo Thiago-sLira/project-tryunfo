@@ -18,20 +18,35 @@ class App extends React.Component {
     isSaveButtonDisabled: true,
     hasTrunfo: false,
     cardsCreated: [],
+    cardsList: [],
     filterName: '',
     filterRarity: 'todas',
+    filterTrunfo: false,
+    isFilterNameDisabled: false,
+    isFilterRarityDisabled: false,
   };
 
   filterInputs = () => {
-    const { cardsCreated, filterName, filterRarity } = this.state;
-    if (filterRarity === 'todas') {
+    const { cardsCreated, filterName, filterRarity, filterTrunfo } = this.state;
+    if (filterTrunfo) {
+      const filter = cardsCreated.filter((card) => card.cardTrunfo === true);
+      this.setState({
+        cardsList: filter,
+        isFilterNameDisabled: true,
+        isFilterRarityDisabled: true,
+      });
+    } else if (filterRarity === 'todas') {
       const filter = cardsCreated.filter((card) => (
         card.cardName.includes(filterName)));
-      this.setState({ cardsCreated: filter });
+      this.setState({
+        cardsList: filter,
+        isFilterNameDisabled: false,
+        isFilterRarityDisabled: false,
+      });
     } else {
       const filter = cardsCreated.filter((card) => (
         card.cardName.includes(filterName) && card.cardRare === (filterRarity)));
-      this.setState({ cardsCreated: filter });
+      this.setState({ cardsList: filter });
     }
   };
 
@@ -85,7 +100,10 @@ class App extends React.Component {
     const { cardsCreated } = this.state;
     const some = cardsCreated.some(({ cardTrunfo }) => cardTrunfo === true);
     if (some) {
-      this.setState({ hasTrunfo: true });
+      this.setState({
+        hasTrunfo: true,
+        cardTrunfo: false,
+      });
     } else {
       this.setState({ hasTrunfo: false });
     }
@@ -118,21 +136,26 @@ class App extends React.Component {
       cardRare: 'normal',
       isSaveButtonDisabled: true,
       cardsCreated: [...prevState.cardsCreated, savedItems],
+      cardsList: [...prevState.cardsCreated, savedItems],
     }), this.disableTrunfo);
   };
 
   deleteCard = (indexCard) => {
     const { cardsCreated } = this.state;
     const newCardsCreated = cardsCreated.filter((_el, index) => index !== indexCard);
-    this.setState({ cardsCreated: newCardsCreated }, this.disableTrunfo);
+    this.setState({
+      cardsCreated: newCardsCreated,
+      cardsList: newCardsCreated,
+    }, this.disableTrunfo);
   };
 
   render() {
     const {
-      cardName, cardDescription, cardsCreated, filterName,
+      cardName, cardDescription, filterName,
       cardAttr1, cardAttr2, cardAttr3, filterRarity,
-      cardImage, cardRare, cardTrunfo,
-      isSaveButtonDisabled, hasTrunfo,
+      cardImage, cardRare, cardTrunfo, filterTrunfo,
+      isSaveButtonDisabled, hasTrunfo, cardsList,
+      isFilterRarityDisabled, isFilterNameDisabled,
     } = this.state;
     return (
       <div>
@@ -165,9 +188,12 @@ class App extends React.Component {
             filterName={ filterName }
             onInputFilterChange={ this.onInputFilterChange }
             filterRarity={ filterRarity }
+            filterTrunfo={ filterTrunfo }
+            isFilterNameDisabled={ isFilterNameDisabled }
+            isFilterRarityDisabled={ isFilterRarityDisabled }
           />
           <CardList
-            cardsCreated={ cardsCreated }
+            cardsList={ cardsList }
             deleteCard={ this.deleteCard }
           />
         </div>
