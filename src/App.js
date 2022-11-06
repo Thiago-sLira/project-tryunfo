@@ -46,7 +46,11 @@ class App extends React.Component {
     } else {
       const filter = cardsCreated.filter((card) => (
         card.cardName.includes(filterName) && card.cardRare === (filterRarity)));
-      this.setState({ cardsList: filter });
+      this.setState({
+        cardsList: filter,
+        isFilterNameDisabled: false,
+        isFilterRarityDisabled: false,
+      });
     }
   };
 
@@ -58,11 +62,11 @@ class App extends React.Component {
     } = this.state;
 
     const total = 211;
-    const maxNumber = 91;
+    const inputLimit = 91;
     const attr = (Number(cardAttr1) + Number(cardAttr2) + Number(cardAttr3)) < total
-    && (Number(cardAttr1) >= 0 && Number(cardAttr1) < maxNumber)
-    && (Number(cardAttr2) >= 0 && Number(cardAttr2) < maxNumber)
-    && (Number(cardAttr3) >= 0 && Number(cardAttr3) < maxNumber);
+    && (Number(cardAttr1) >= 0 && Number(cardAttr1) < inputLimit)
+    && (Number(cardAttr2) >= 0 && Number(cardAttr2) < inputLimit)
+    && (Number(cardAttr3) >= 0 && Number(cardAttr3) < inputLimit);
 
     const verifyLengthInputs = cardName.length > 0
     && cardDescription.length > 0
@@ -140,12 +144,13 @@ class App extends React.Component {
     }), this.disableTrunfo);
   };
 
-  deleteCard = (indexCard) => {
+  deleteCard = (nameCard) => {
     const { cardsCreated } = this.state;
-    const newCardsCreated = cardsCreated.filter((_el, index) => index !== indexCard);
+    const newCardsCreated = cardsCreated.filter((el) => el.cardName !== nameCard);
     this.setState({
       cardsCreated: newCardsCreated,
       cardsList: newCardsCreated,
+      filterRarity: 'todas',
     }, this.disableTrunfo);
   };
 

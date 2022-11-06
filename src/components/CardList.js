@@ -8,7 +8,7 @@ class CardList extends Component {
     } = this.props;
     return (
       <div>
-        { cardsList.map((el, index) => (
+        { cardsList.map((el) => (
           <div key={ el.cardName } className="container-card">
             <section className="card-created">
               <h4 data-testid="name-card">
@@ -37,7 +37,7 @@ class CardList extends Component {
             <button
               type="button"
               data-testid="delete-button"
-              onClick={ () => deleteCard(index) }
+              onClick={ () => deleteCard(el.cardName) }
             >
               Excluir
             </button>
