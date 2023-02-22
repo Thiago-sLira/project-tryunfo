@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+const twoHundredAndTen = 210;
 class Form extends Component {
   render() {
     const {
@@ -84,6 +85,12 @@ class Form extends Component {
             />
           </label>
           <br />
+          <h5>
+            { `Pontos Totais: ${(+(cardAttr1) + +(cardAttr2) + +(cardAttr3))}` }
+          </h5>
+          { (+(cardAttr1) + +(cardAttr2) + +(cardAttr3)) > twoHundredAndTen && (
+            <h4>Os pontos totais não devem ultrapassar 210!!!</h4>
+          ) }
           <br />
           <label htmlFor="input-image">
             Imagem

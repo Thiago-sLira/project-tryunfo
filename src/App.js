@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import logo from './logo_tryunfo.jpg';
 import Form from './components/Form';
 import Card from './components/Card';
 import CardList from './components/CardList';
@@ -163,7 +164,8 @@ class App extends React.Component {
       isFilterRarityDisabled, isFilterNameDisabled,
     } = this.state;
     return (
-      <div>
+      <main>
+        <img src={ logo } alt="tryunfo" width="280px" />
         <Form
           onInputChange={ this.onInputChange }
           cardName={ cardName }
@@ -188,7 +190,7 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
         />
-        <div>
+        <section>
           <Filter
             filterName={ filterName }
             onInputFilterChange={ this.onInputFilterChange }
@@ -201,8 +203,8 @@ class App extends React.Component {
             cardsList={ cardsList }
             deleteCard={ this.deleteCard }
           />
-        </div>
-      </div>
+        </section>
+      </main>
     );
   }
 }
