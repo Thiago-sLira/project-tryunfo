@@ -164,47 +164,53 @@ class App extends React.Component {
       isFilterRarityDisabled, isFilterNameDisabled,
     } = this.state;
     return (
-      <main>
-        <img src={ logo } alt="tryunfo" width="280px" />
-        <Form
-          onInputChange={ this.onInputChange }
-          cardName={ cardName }
-          cardDescription={ cardDescription }
-          cardAttr1={ cardAttr1 }
-          cardAttr2={ cardAttr2 }
-          cardAttr3={ cardAttr3 }
-          cardImage={ cardImage }
-          cardRare={ cardRare }
-          cardTrunfo={ cardTrunfo }
-          isSaveButtonDisabled={ isSaveButtonDisabled }
-          hasTrunfo={ hasTrunfo }
-          onSaveButtonClick={ this.onSaveButtonClick }
-        />
-        <Card
-          cardName={ cardName }
-          cardDescription={ cardDescription }
-          cardAttr1={ cardAttr1 }
-          cardAttr2={ cardAttr2 }
-          cardAttr3={ cardAttr3 }
-          cardImage={ cardImage }
-          cardRare={ cardRare }
-          cardTrunfo={ cardTrunfo }
-        />
-        <section>
-          <Filter
-            filterName={ filterName }
-            onInputFilterChange={ this.onInputFilterChange }
-            filterRarity={ filterRarity }
-            filterTrunfo={ filterTrunfo }
-            isFilterNameDisabled={ isFilterNameDisabled }
-            isFilterRarityDisabled={ isFilterRarityDisabled }
-          />
-          <CardList
-            cardsList={ cardsList }
-            deleteCard={ this.deleteCard }
-          />
-        </section>
-      </main>
+      <div>
+        <figure>
+          <img src={ logo } alt="tryunfo" width="280px" />
+        </figure>
+        <main>
+          <section className="new-card-section">
+            <Form
+              onInputChange={ this.onInputChange }
+              cardName={ cardName }
+              cardDescription={ cardDescription }
+              cardAttr1={ cardAttr1 }
+              cardAttr2={ cardAttr2 }
+              cardAttr3={ cardAttr3 }
+              cardImage={ cardImage }
+              cardRare={ cardRare }
+              cardTrunfo={ cardTrunfo }
+              isSaveButtonDisabled={ isSaveButtonDisabled }
+              hasTrunfo={ hasTrunfo }
+              onSaveButtonClick={ this.onSaveButtonClick }
+            />
+            <Card
+              cardName={ cardName }
+              cardDescription={ cardDescription }
+              cardAttr1={ cardAttr1 }
+              cardAttr2={ cardAttr2 }
+              cardAttr3={ cardAttr3 }
+              cardImage={ cardImage }
+              cardRare={ cardRare }
+              cardTrunfo={ cardTrunfo }
+            />
+          </section>
+          <section>
+            <Filter
+              filterName={ filterName }
+              onInputFilterChange={ this.onInputFilterChange }
+              filterRarity={ filterRarity }
+              filterTrunfo={ filterTrunfo }
+              isFilterNameDisabled={ isFilterNameDisabled }
+              isFilterRarityDisabled={ isFilterRarityDisabled }
+            />
+            <CardList
+              cardsList={ cardsList }
+              deleteCard={ this.deleteCard }
+            />
+          </section>
+        </main>
+      </div>
     );
   }
 }
