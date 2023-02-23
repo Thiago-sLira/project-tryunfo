@@ -3,7 +3,36 @@ body {
   padding: 0;
 }
 
+h2 {
+  font-style: italic;
+}
+
 .container-card {
   border: 2px solid black;
   display: flex;
+}
+
+.container-preview-card {
+  border: 2px solid black;
+  position: relative;
+}
+
+.new-card-section {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0.1px 4px 19px rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  margin: 5px 5%;
+  padding: 10px;
+}
+
+form {
+  padding-right: 10px;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }

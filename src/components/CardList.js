@@ -7,10 +7,10 @@ class CardList extends Component {
       cardsList, deleteCard,
     } = this.props;
     return (
-      <div>
+      <section>
         { cardsList.map((el) => (
           <div key={ el.cardName } className="container-card">
-            <section className="card-created">
+            <div className="card-created">
               <h4 data-testid="name-card">
                 { el.cardName }
               </h4>
@@ -33,7 +33,7 @@ class CardList extends Component {
                 </span>
               </div>
               { el.cardTrunfo && <h5 data-testid="trunfo-card">Super Trunfo</h5> }
-            </section>
+            </div>
             <button
               type="button"
               data-testid="delete-button"
@@ -43,7 +43,7 @@ class CardList extends Component {
             </button>
           </div>
         ))}
-      </div>
+      </section>
     );
   }
 }

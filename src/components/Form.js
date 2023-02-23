@@ -15,7 +15,8 @@ class Form extends Component {
     } = this.props;
     return (
       <form>
-        <babel htmlFor="input-name">
+        <h2>Adicione uma nova carta</h2>
+        <label htmlFor="input-name">
           Nome
           <input
             type="text"
@@ -26,7 +27,7 @@ class Form extends Component {
             onChange={ onInputChange }
             name="cardName"
           />
-        </babel>
+        </label>
         <br />
         <br />
         <label htmlFor="textarea-description">

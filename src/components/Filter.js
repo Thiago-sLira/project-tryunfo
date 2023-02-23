@@ -9,7 +9,7 @@ class Filter extends Component {
     } = this.props;
     return (
       <div>
-        <h3>Todas as Cartas</h3>
+        <h2>Todas as Cartas</h2>
         Filtros de busca
         <label htmlFor="filter-name">
           <input

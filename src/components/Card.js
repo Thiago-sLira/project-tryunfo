@@ -8,32 +8,45 @@ class Card extends Component {
       cardImage, cardRare, cardTrunfo,
     } = this.props;
     return (
-      <div>
-        <section className="container-show-card">
-          <h4 data-testid="name-card">
+      <section className="container-preview-card">
+        <h2>Pré-Visualização</h2>
+        <div>
+          <h4 data-testid="name-card" className="name-card">
             { cardName }
           </h4>
-          <span data-testid="rare-card">
+          <span data-testid="rare-card" className="rare-card">
             { cardRare }
           </span>
-          <img src={ cardImage } alt={ cardName } data-testid="image-card" />
-          <p data-testid="description-card">
+          <img
+            src={ cardImage }
+            alt={ cardName }
+            data-testid="image-card"
+            className="image-card"
+          />
+          <p data-testid="description-card" className="description-card">
             { cardDescription }
           </p>
           <div id="container-attributes">
-            <span data-testid="attr1-card">
+            <span data-testid="attr1-card" className="attr-card">
               { cardAttr1 }
             </span>
-            <span data-testid="attr2-card">
+            <span data-testid="attr2-card" className="attr-card">
               { cardAttr2 }
             </span>
-            <span data-testid="attr3-card">
+            <span data-testid="attr3-card" className="attr-card">
               { cardAttr3 }
             </span>
           </div>
-          { cardTrunfo && <h5 data-testid="trunfo-card">Super Trunfo</h5> }
-        </section>
-      </div>
+          { cardTrunfo && (
+            <h5
+              data-testid="trunfo-card"
+              className="trunfo-card"
+            >
+              Super Trunfo
+            </h5>
+          ) }
+        </div>
+      </section>
     );
   }
 }
