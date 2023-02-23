@@ -10,7 +10,7 @@ class Card extends Component {
     return (
       <section className="container-preview-card">
         <h2>Pré-Visualização</h2>
-        <div>
+        <div className="card">
           <h4 data-testid="name-card" className="name-card">
             { cardName }
           </h4>
@@ -19,7 +19,7 @@ class Card extends Component {
           </span>
           <img
             src={ cardImage }
-            alt={ cardName }
+            alt={ cardImage ? `Imagem do Card ${cardName}` : '' }
             data-testid="image-card"
             className="image-card"
           />
