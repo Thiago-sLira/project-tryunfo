@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Button from 'react-bootstrap/Button';
 
 const twoHundredAndTen = 210;
 const minusOne = -1;
@@ -176,14 +177,14 @@ class Form extends Component {
         }
         <br />
         <br />
-        <button
+        <Button
           type="button"
           data-testid="save-button"
           disabled={ isSaveButtonDisabled }
           onClick={ onSaveButtonClick }
         >
           Salvar
-        </button>
+        </Button>
       </form>
     );
   }
